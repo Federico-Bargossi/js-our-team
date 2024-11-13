@@ -40,6 +40,11 @@ const teamMembers = [
 const containerTeamElem = document.querySelector(".row");
 console.log(containerTeamElem);
 
+const nameInput = document.getElementById("name");
+const roleInput = document.getElementById("role");
+const imgInput = document.getElementById("img");
+const emailInput = document.getElementById("email")
+
 //Funzione per inserimento
 
 const renderTeam = () => {
@@ -64,3 +69,29 @@ const renderTeam = () => {
 }
 
 renderTeam();
+
+const memberForm = document.getElementById("member-form");
+const inputs = document.querySelectorAll("#member-form");
+
+
+
+const handleSubmit = (event) =>{
+  event.preventDefault();
+  const name = nameInput.value.trim();
+  const role = roleInput.value.trim();
+  const img = imgInput.value.trim();  
+  const email = emailInput.value.trim();
+  const newMember = {
+    name,
+    role,
+    email,
+    img,
+  }
+  teamMembers.push(newMember);
+  console.log(teamMembers);
+
+ renderTeam(newMember);
+
+};
+
+memberForm.addEventListener("submit", handleSubmit);
